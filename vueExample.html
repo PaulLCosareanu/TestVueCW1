@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="CSS/style.css" />
+    <div id="title">
+      <title>{{title}}</title>
+    </div>
+  </head>
+
+  <body>
+    <div id="app">
+      <h1>{{websiteName}}</h1>
+      <div v-if="showProducts">
+        <div class="sortBy">
+          <label for="category">Choose a category to sort with:</label>
+          <select
+            name="category"
+            id="category"
+            @change="onChangeCategory($event);"
+          >
+            <option value="subject">Subject</option>
+            <option value="location">Location</option>
+            <option value="price">Price</option>
+            <option value="spaces">Spaces</option>
+          </select>
+          <br /><br />
+          <label for="order">Choose an ascending or descending order:</label>
+          <select name="order" id="order" @change="onChangeOrder($event);">
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+          </select>
+          <br /><br />
+        </div>
+        <div class="productList">
+          <div v-for="product in courses" class="product">
+            <div class="productTop">
+              <img class="image" v-bind:src="product.link" />
+              <div class="productText">
+                <h3 v-text="product.subject"></h3>
+                <p v-text="product.location"></p>
+                <p>price:{{product.price}}</p>
+                <p>spaces:{{product.spaces}}</p>
+              </div>
+            </div>
+            <button
+              v-on:click="addToCart(product.id);checkCheckoutButton();"
+              class="button"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+        <div v-if="showCheckoutButton">
+          <button type="button" class="checkoutButton" v-on:click="displayCheckout()">Checkout</button>
+        </div>
+      </div>
+      <div v-if="showCheckout">
+        <div class="productList">
+        <div v-for="index, key in checkoutItems" :key="index">
+          <div v-for="prod in courses" >
+            <div v-if="prod.id==checkoutItems[key]"class="productBought">
+              <div class="productTop">
+                <img class="image" v-bind:src="prod.link" />
+                <div class="productText">
+                  <h3 v-text="prod.subject"></h3>
+                  <p v-text="prod.location"></p>
+                  <p>price:{{prod.price}}</p>
+                  <p>Quantity: {{quantityItems[key]}}</p>
+                </div>
+              </div>
+              <button
+              v-on:click="deleteItem(prod.id)"
+              class="button"
+            >
+              Cancel item
+            </button>
+            </div>
+          </div>
+        </div>
+      
+        
+
+        </div>
+        <button type="button" v-on:click="displayProducts()">Go back</button>
+        <h3>Please specify your name:</h3><input type="text" name="name" v-model="name" id="name" v-on:keypress="isLetter();checkForm();" v-on:keyup="checkForm()">
+        <h3>Please specify your number:</h3> <input type="text" name="number" id="number" v-model="number" v-on:keypress="isNumber();checkForm();"v-on:keyup="checkForm()" maxlength="11">
+        <p v-if="showError" style="color:red">Incomplete form or invalid characters entered!</p>
+        <div v-if="showSubmitButton">
+          <button type="button"  v-on:click="checkout()">Submit Order</button>
+        </div>
+        <h1 v-if="showSuccess" style="color:green">Thank you for buying these products! Have a nice day</h1>
+      </div>
+      
+    </div>
+    <script src="./JavaScript/test.js"></script>
+  </body>
+  <div>
+    Icons made by
+    <a href="https://www.flaticon.com/authors/smalllikeart" title="smalllikeart"
+      >smalllikeart</a
+    >
+    from
+    <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+  </div>
+  <div>
+    Icons made by
+    <a href="https://www.flaticon.com/authors/nhor-phai" title="Nhor Phai"
+      >Nhor Phai</a
+    >
+    from
+    <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+  </div>
+  <div>
+    Icons made by
+    <a href="https://www.flaticon.com/authors/eucalyp" title="Eucalyp"
+      >Eucalyp</a
+    >
+    from
+    <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+  </div>
+  <div>
+    Icons made by
+    <a href="https://www.flaticon.com/authors/freepik" title="Freepik"
+      >Freepik</a
+    >
+    from
+    <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+  </div>
+</html>
