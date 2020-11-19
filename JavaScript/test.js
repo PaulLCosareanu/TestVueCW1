@@ -39,6 +39,7 @@ var app = new Vue({
     showError: false,
     showSuccess: false,
     showAddButton:true,
+    hideAddCart:true,
   },
   methods: { //methods used
     addToCart(product) { //add to cart logic
@@ -158,6 +159,18 @@ var app = new Vue({
         }
       }
 
+
+    },
+    hideAddToCartButton(id){
+      console.log(id)
+      for(let i=0;i<courses.length;i++){
+        if(courses[i].id==id){
+          if(courses[i].spaces==0){
+            hideAddCart=false;
+            console.log("this is "+courses[i].id)
+          }
+        }
+      }
 
     },
     checkout() {
