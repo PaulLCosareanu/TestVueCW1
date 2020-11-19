@@ -243,11 +243,10 @@ var app = new Vue({
       console.log("step 1")
       if (/^[A-Za-z]+$/.test(nm)) {
         this.isLet = true
-        console.log("step 2")
-        // this.showError=false;
+      
       } else {
         this.isLet = false;
-        // this.showError=true;
+       
       }
 
     },
@@ -266,20 +265,7 @@ var app = new Vue({
 
     }
   },
-  // computed:{
-  //   computedClass:function(){
-  //     return{
-  //       button:"button",
-  //       hide:this.hide
-  //     }
-  //   },
-  //   computedId:function(){
-  //     return{
-  //       button:"button",
-  //       hide:courses.id
-  //     }
-  //   }
-  // },
+  
 
   mounted() { //mounted is a function which starts after the page has been created (loaded)
 //sort
