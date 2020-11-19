@@ -162,9 +162,11 @@ var app = new Vue({
 
     },
     hideAddToCartButton(id){
-      console.log(id)
+      console.log("1")
       for(let i=0;i<courses.length;i++){
+        console.log("2")
         if(courses[i].id==id){
+          console.log("3")
           if(courses[i].spaces==0){
             hideAddCart=false;
             console.log("this is "+courses[i].id)
