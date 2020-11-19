@@ -39,7 +39,7 @@ var app = new Vue({
     showError: false,
     showSuccess: false,
     showAddButton:true,
-    hideAddCart:true,
+    hide:false,
   },
   methods: { //methods used
     addToCart(product) { //add to cart logic
@@ -161,20 +161,21 @@ var app = new Vue({
 
 
     },
-    hideAddToCartButton(id){
-      console.log("1")
-      for(let i=0;i<courses.length;i++){
-        console.log("2")
-        if(courses[i].id==id){
-          console.log("3")
-          if(courses[i].spaces==0){
-            hideAddCart=false;
-            console.log("this is "+courses[i].id)
-          }
-        }
-      }
+    // hideAddToCartButton(id){
+    //   console.log("1")
+    //   for(let i=0;i<courses.length;i++){
+    //     console.log("2")
+    //     if(courses[i].id==id){
+    //       console.log("3")
+    //       if(courses[i].spaces==0){
+    //         this.hideAddCart=false;
+    //         console.log("this is "+courses[i].id)
+            
+    //       }
+    //     }
+    //   }
 
-    },
+    // },
     checkout() {
       for (let i = 0; i < this.checkoutItems.length; i++) {
         if (localStorage.getItem("produts_bought") !== null && localStorage.getItem("produts_bought") !== "" && localStorage.getItem("produts_bought") !== "undefined") {
@@ -266,6 +267,20 @@ var app = new Vue({
 
     }
   },
+  // computed:{
+  //   computedClass:function(){
+  //     return{
+  //       button:"button",
+  //       hide:this.hide
+  //     }
+  //   },
+  //   computedId:function(){
+  //     return{
+  //       button:"button",
+  //       hide:courses.id
+  //     }
+  //   }
+  // },
 
   mounted() { //mounted is a function which starts after the page has been created (loaded)
 //sort

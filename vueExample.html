@@ -43,9 +43,10 @@
                 <p>spaces:{{product.spaces}}</p>
               </div>
             </div>
-            <button v-if="hideAddCart"
-              v-on:click="addToCart(product.id);checkCheckoutButton();hideAddToCartButton(product.id);"
-              class="button"
+            <button 
+              v-on:click="addToCart(product.id);checkCheckoutButton();hide=!hide;"
+              v-bind:class="computedClass"
+              v-bind:id="computedId"
             >
               Add to Cart
             </button>
