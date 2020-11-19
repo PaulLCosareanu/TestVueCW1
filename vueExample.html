@@ -43,7 +43,7 @@
                 <p>spaces:{{product.spaces}}</p>
               </div>
             </div>
-            <button
+            <button v-if="hideAddToCartButton(product.id)"
               v-on:click="addToCart(product.id);checkCheckoutButton();"
               class="button"
             >
