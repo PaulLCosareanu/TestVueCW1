@@ -2,7 +2,7 @@
 <html>
   <head>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <link rel="stylesheet" href="CSS/style.css" />
+    <link rel="stylesheet" href="./CSS/style.css" />
     <div id="title">
       <title>{{title}}</title>
     </div>
@@ -44,10 +44,8 @@
               </div>
             </div>
             <button 
-              v-on:click="addToCart(product.id);checkCheckoutButton();hide=!hide;"
-              v-bind:class="computedClass"
-              v-bind:id="computedId"
-            >
+              v-on:click="addToCart(product.id);checkCheckoutButton();hideButton(product.id);"
+              v-bind:value="product.id" v-bind:id="product.id"  class="button"          >
               Add to Cart
             </button>
           </div>

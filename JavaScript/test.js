@@ -161,6 +161,19 @@ var app = new Vue({
 
 
     },
+    hideButton(id){
+      for(let i=0;i<courses.length;i++){
+            console.log("2")
+            if(courses[i].id==id){
+              console.log("3")
+              if(courses[i].spaces==0){
+                document.getElementById(id).style.display="none";
+                console.log("this is "+courses[i].id)
+                
+              }
+            }
+          }
+    },
     // hideAddToCartButton(id){
     //   console.log("1")
     //   for(let i=0;i<courses.length;i++){
